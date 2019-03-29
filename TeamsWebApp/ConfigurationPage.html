@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>This is a static tab</title>
+    <script src="https://unpkg.com/@microsoft/teams-js@1.4.1/dist/MicrosoftTeams.min.js" integrity="sha384-wHgBQlRj8iDw76cpan9ViEoOBiIJid4ACaE6vA2gUJPtn15GJnMmUGS+fLxKBWeI" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <form>
+        <input type="button" name="ClickMe" value="Click Me" onclick="onClick()">
+        
+    </form>
+    <script type="text/javascript">
+
+
+        microsoftTeams.initialize();
+
+        microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+
+            microsoftTeams.settings.setSettings({
+                entityId: "contentPage",
+                contentUrl: "https://teamswebappdemo.azurewebsites.net/contentpage.html",
+                suggestedDisplayName: "Content Page",
+                websiteUrl: "https://www.networkkonferencija.ba/",
+                removeUrl: "https://teamswebappdemo.azurewebsites.net/contentpage.html"
+            });
+
+            saveEvent.notifySuccess();
+        });
+      
+
+
+        function onClick() {
+            microsoftTeams.settings.setValidityState(true);
+        }
+
+
+    </script>
+    This is a configuration page
+</body>
+</html >
